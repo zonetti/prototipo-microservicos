@@ -1,0 +1,60 @@
+<div class="well" ng-if="!loaded">
+  Buscando publicação...
+</div>
+
+<div class="media" ng-if="loaded && post">
+  <div class="media-left">
+    <a href="javascript:void(0)">
+      <img class="media-object" src="/assets/img/avatar.png">
+    </a>
+  </div>
+  <div class="media-body">
+    <h2 class="media-heading">
+      {{ post.title }}<br>
+      <small>{{ post.account.name }} - {{ moment(post.created_at).fromNow() }}</small>
+      <button class="btn btn-danger btn-xs pull-right" title="Remover este tópico" ng-click="remove()" ng-if="user && post.account_id === user.id">
+        <span class="glyphicon glyphicon-remove"></span>
+      </button>
+      <a class="btn btn-default btn-xs pull-right" title="Editar este tópico" href="#/topic/edit/{{ post.id }}" ng-if="user && post.account_id === user.id" style="margin-right: 5px">
+        <span class="glyphicon glyphicon-pencil"></span>
+      </a>
+    </h2>
+    <br><br>
+    {{ post.body }}
+  </div>
+</div>
+
+<div class="well" ng-if="!loaded && !comments.length">
+  Buscando respostas...
+</div>
+
+<div ng-if="loaded && comments.length">
+  <br><br>
+  <div class="media" ng-repeat="comment in comments">
+    <div class="media-left">
+      <a href="javascript:void(0)">
+        <img class="media-object" src="/assets/img/avatar.png">
+      </a>
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading">
+        <small>{{ comment.account.name }} - {{ moment(comment.created_at).fromNow() }}</small>
+      </h4>
+      {{ comment.comment }}
+    </div>
+  </div>
+</div>
+
+<br><br>
+
+<div class="well" ng-if="loaded && !user">
+  Faça login para responder este tópico!
+</div>
+
+<form ng-submit="addComment()" ng-if="loaded && user">
+  <div class="form-group">
+    <textarea class="form-control" rows="3" ng-model="$parent.newComment"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Adicionar Resposta</button>
+  <br><br>
+</form>

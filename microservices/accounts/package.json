@@ -1,0 +1,35 @@
+{
+  "name": "accounts-provider",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "cls && set NODE_ENV=development&& npm run db:update && cls && node app",
+    "deploy": "cls && set NODE_ENV=production&& npm run db:update && cls && node app",
+    "test": "cls && set NODE_ENV=test&& npm run db:update && standard && cls && mocha -R spec -t 10000 test/**/*.js",
+    "db:create": "knex migrate:make",
+    "db:update": "knex migrate:latest"
+  },
+  "standard": {
+    "globals": [
+      "CONFIG",
+      "log",
+      "describe",
+      "it",
+      "before",
+      "after"
+    ]
+  },
+  "dependencies": {
+    "amqp-rpc": "0.0.8",
+    "bookshelf": "^0.8.2",
+    "knex": "^0.8.6",
+    "lodash": "^3.10.1",
+    "shortid": "^2.2.4",
+    "sqlite3": "^3.1.0",
+    "winston": "^1.1.1"
+  },
+  "devDependencies": {
+    "mocha": "^2.3.3",
+    "should": "^7.1.0",
+    "standard": "^5.3.1"
+  }
+}

@@ -1,0 +1,40 @@
+<a href="#/panel/posts/new" class="btn btn-success">
+  <span class="glyphicon glyphicon-plus"></span> 
+  Criar nova publicação
+</a>
+
+<br><br>
+
+<div class="well" ng-if="!loaded">
+  Buscando suas publicações...
+</div>
+
+<div class="well" ng-if="loaded && !posts.length">
+  Nenhuma publicação encontrada!
+</div>
+
+<table class="table table-striped" ng-if="posts.length">
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Última atualização</th>
+      <th>Criada em</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="post in posts">
+      <td>{{ post.title }}</td>
+      <td title="{{ moment(post.updated_at).format('DD/MM/YYYY [-] HH:mm:ss') }}">{{ moment(post.updated_at).fromNow() }}</td>
+      <td title="{{ moment(post.created_at).format('DD/MM/YYYY [-] HH:mm:ss') }}">{{ moment(post.created_at).fromNow() }}</td>
+      <td>
+        <button class="btn btn-default btn-xs" title="Editar esta publicação" ng-click="edit(post.id)">
+          <span class="glyphicon glyphicon-pencil"></span>
+        </button>
+        <button class="btn btn-danger btn-xs" title="Remover esta publicação" ng-click="remove(post.id)">
+          <span class="glyphicon glyphicon-remove"></span>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

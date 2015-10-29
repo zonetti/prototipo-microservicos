@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fórum</title>
+    <link href="/assets/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/lib/loading-bar/loading-bar.min.css" rel="stylesheet">
+    <link href="/assets/css/style.css" rel="stylesheet">
+  </head>
+
+  <body ng-app="app" ng-controller="MainCtrl">
+
+    <div class="container">
+      <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right" ng-if="user">
+            <li id="logado"><b>Logado como:</b> {{ user.name }}</li>
+            <li><a href="javascript:void(0)" ng-click="logout()">Efetuar logout</a></li>
+          </ul>
+          <ul class="nav nav-pills pull-right" ng-if="!user">
+            <li><a href="#/login">Efetuar login</a></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted"><a href="#/">Fórum</a></h3>
+      </div>
+
+      <div id="content" class="container">
+        <div ng-view></div>
+      </div>
+
+      <footer class="footer">
+        <p>&copy; Protótipo Microservices</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    <script src="/assets/lib/jquery/jquery.min.js"></script>
+    <script src="/assets/lib/jquery/jquery.noty.min.js"></script>
+    <script src="/assets/lib/angular/angular.min.js"></script>
+    <script src="/assets/lib/angular/angular-route.min.js"></script>
+    <script src="/assets/lib/loading-bar/loading-bar.min.js"></script>
+    <script src="/assets/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/assets/lib/moment/moment.min.js"></script>
+
+    <script src="/assets/js/app.js"></script>
+
+    <script src="/assets/js/controllers/main.js"></script>
+    <script src="/assets/js/controllers/login.js"></script>
+    <script src="/assets/js/controllers/register.js"></script>
+    <script src="/assets/js/controllers/forum.js"></script>
+    <script src="/assets/js/controllers/forum_form.js"></script>
+    <script src="/assets/js/controllers/forum_topic.js"></script>
+
+    <script src="/assets/js/factories/show_message.js"></script>
+    <script src="/assets/js/factories/restful_service_factory.js"></script>
+
+    <script src="/assets/js/services/account.js"></script>
+    <script src="/assets/js/services/post.js"></script>
+    <script src="/assets/js/services/comment.js"></script>
+  </body>
+</html>

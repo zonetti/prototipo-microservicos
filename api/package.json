@@ -1,0 +1,24 @@
+{
+  "name": "api",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "cls && set NODE_ENV=development&& node app",
+    "deploy": "cls && set NODE_ENV=production&& node app",
+    "test": "cls && set NODE_ENV=test&& standard"
+  },
+  "standard": {
+    "globals": [
+      "CONFIG"
+    ]
+  },
+  "dependencies": {
+    "amqp-rpc": "0.0.8",
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "lodash": "^3.10.1",
+    "morgan": "^1.6.1"
+  },
+  "devDependencies": {
+    "standard": "^5.3.1"
+  }
+}

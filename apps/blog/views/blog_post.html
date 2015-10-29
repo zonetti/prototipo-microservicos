@@ -1,0 +1,51 @@
+<div class="well" ng-if="!loaded">
+  Buscando publicação...
+</div>
+
+<div ng-if="loaded && post">
+  <h2>{{ post.title }}</h2>
+</div>
+
+<br><br>
+
+<p ng-if="loaded && post">{{ post.body }}</p>
+
+<br><br>
+
+<h4>Comentários</h4>
+
+<div class="well" ng-if="!loaded && !comments.length">
+  Buscando comentários...
+</div>
+
+<div ng-if="loaded && comments.length">
+  <br><br>
+  <div class="media" ng-repeat="comment in comments">
+    <div class="media-left">
+      <a href="javascript:void(0)">
+        <img class="media-object" src="/assets/img/avatar.png">
+      </a>
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading">
+        {{ comment.account.name }}
+        <small class="pull-right">{{ moment(comment.created_at).fromNow() }}</small>
+      </h4>
+      {{ comment.comment }}
+    </div>
+  </div>
+</div>
+
+<br><br>
+
+<div class="well" ng-if="loaded && !user">
+  Faça login para comentar nesta publicação!
+</div>
+
+<form ng-submit="addComment()" ng-if="loaded && user">
+  <div class="form-group">
+    <textarea class="form-control" rows="3" ng-model="$parent.newComment"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Adicionar comentário</button>
+  <br><br>
+</form>

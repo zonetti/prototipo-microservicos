@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-md-offset-2 col-md-8">
+    <form ng-submit="save()">
+      <div class="form-group">
+        <label for="title">Título</label>
+        <input type="text" class="form-control" ng-model="post.title" id="title" placeholder="Título da publicação">
+      </div>
+      <div class="form-group">
+        <label for="body">Texto</label>
+        <textarea class="form-control" rows="3" ng-model="post.body"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">
+        {{ post.id ? 'Atualizar' : 'Cadastrar' }}
+      </button>
+      <a class="btn btn-default pull-right" href="#/panel/posts">Voltar para a listagem</a>
+    </form>
+  </div>
+</div>

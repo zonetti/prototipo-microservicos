@@ -1,0 +1,19 @@
+{
+  "name": "forum",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "cls && http-server -c-0 -p 3001",
+    "test": "cls && standard"
+  },
+  "standard": {
+    "globals": [
+      "angular", "app", "moment", "noty"
+    ]
+  },
+  "dependencies": {
+    "http-server": "^0.8.5"
+  },
+  "devDependencies": {
+    "standard": "^5.3.1"
+  }
+}

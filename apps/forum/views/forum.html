@@ -1,0 +1,27 @@
+<h2>
+  Fórum
+  <a href="#/topic/new" class="btn btn-success pull-right" ng-if="loaded && user">
+    <span class="glyphicon glyphicon-plus"></span> 
+    Criar novo tópico
+  </a>
+</h2>
+
+<p ng-if="loaded && !user">
+  Efetue login para criar tópicos!
+</p>
+
+<br><br>
+
+<div class="well" ng-if="!loaded">
+  Buscando tópicos...
+</div>
+
+<div class="well" ng-if="loaded && !posts.length">
+  Nenhum tópico encontrado!
+</div>
+
+<div class="list-group" ng-if="posts.length">
+  <a href="#/topic/{{ post.id }}" class="list-group-item" ng-repeat="post in posts">
+    {{ post.title }}
+  </a>
+</div>
